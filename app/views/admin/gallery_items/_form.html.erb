@@ -1,0 +1,13 @@
+<tr>
+  <td><%= t("filename") %>:</td>
+  <td><%= f.file_field :attachment %></td>
+</tr>
+<%= hidden_field_tag :gallery_id, @gallery.id %>
+<tr>
+  <td><%= t("ext_galleries_title") %>:</td>
+  <td><%= f.text_field :title %></td>
+</tr>
+<tr>
+  <td><%= t("ext_galleries_caption") %>:</td>
+  <td><%= f.text_field :caption %></td>
+</tr>

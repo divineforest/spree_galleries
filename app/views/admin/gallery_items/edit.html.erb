@@ -1,0 +1,15 @@
+<%= render "shared/error_messages", :target => @gallery_item %>
+
+<%= form_for(:gallery_item, :url => [:admin, @gallery_item], :html => { :method => :put, :multipart => true }) do |f| %>
+  <table class="basic-table">
+    <tr>
+      <td><%= t("thumbnail") %>:</td>
+      <td><%= link_to(image_tag(@gallery_item.attachment.url(:mini)), @gallery_item.attachment.url(:normal)) %></td>
+    </tr>
+    <%= render :partial => "form", :locals => { :f => f } %>
+  </table>
+  <p class="form-buttons">
+    <%= button t("update") %>
+    <%= t('or') %> <%= link_to t("cancel"), [:admin, @gallery_item], :id => "cancel_link" %>
+  </p>
+<% end %>

@@ -1,0 +1,36 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li id="new_product_link">
+      <%= button_link_to t("ext_galleries_new_gallery_button"), new_object_url, {:icon => 'add'} %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%=t("ext_galleries_list_galleries") %></h1>
+
+<table class="index">
+	<tr>
+		<th><%=t("ext_galleries_title")%></th>
+		<th><%=t("ext_galleries_link")%></th>
+		<th><%=t("action")%></th>
+  </tr>
+	<tbody>
+    	<% @galleries.each do |gallery| %>
+		<tr class="<%= cycle('even', 'odd') %>" id="<%= dom_id(gallery) %>">
+			<td>
+				<%= link_to gallery.title, [:admin, gallery, :gallery_items] %>
+			</td>
+			<td>
+				<%= link_to t("ext_galleries_link_view"), gallery %>
+			</td>
+			<td>
+        <%= link_to_edit gallery %> &nbsp;
+        <%= link_to_delete gallery %>
+	    </td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

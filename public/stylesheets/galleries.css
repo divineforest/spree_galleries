@@ -1,0 +1,23 @@
+.gallery-listing .gallery {
+	float: left;
+	margin: 0 15px 15px 0;
+}
+.gallery-listing .gallery-picture, .gallery-listing .gallery-title {width: 220px;}
+.gallery-listing .gallery-picture {
+	height: 220px;
+}
+.gallery-listing .gallery-title {
+	font-size: 18px;
+	height: 25px;
+	overflow: hidden;
+}
+
+.gallery-item-listing {margin-bottom: 20px;}
+.gallery-item-listing .gallery-item {
+	float: left;
+	margin: 0 15px 15px 0;
+	width: 220px;
+	height: 220px;
+}
+
+#gallery-item-details .gallery-item-picture {margin-bottom: 20px;}

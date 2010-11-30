@@ -1,0 +1,12 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<h1><%= t("ext_galleries_new_gallery") %></h1>
+<%= render "shared/error_messages", :target => @gallery %>
+
+<% form_for(:gallery, :url => collection_url) do |f| %>
+  <%= render :partial => "form", :locals => { :f => f } %>
+  <p class="form-buttons">
+    <%= button t("actions.create"), nil, 'submit', {"class" => "wymupdate"} %>
+    <%= t("or") %> <%= link_to t("actions.cancel"), collection_url %>
+  </p>
+<% end %>

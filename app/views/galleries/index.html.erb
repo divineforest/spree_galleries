@@ -1,0 +1,21 @@
+<% content_for :head do %>
+	<%= stylesheet_link_tag "galleries" %>
+<% end %>
+
+<h1><%= t(:galleries) %></h1>
+
+<% if @galleries.blank? %>
+  <%= t(:ext_galleries_no_galleries) %>
+<% else %>
+	<div class="gallery-listing">
+		<% @galleries.each do |gallery| %>
+			<div class="gallery">
+				<h2 class="gallery-title"><%= gallery.title %></h2>
+				<div class="gallery-picture">
+					<%= link_to image_tag(gallery.gallery_items.present? && gallery.gallery_items.first.attachment.url(:normal)), [gallery, :gallery_items] %>
+				</div>
+			</div>
+		<% end %>
+		<div style="clear:both;"></div>
+	</div>
+<% end %>

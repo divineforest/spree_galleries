@@ -1,0 +1,39 @@
+<table class="index">
+  <tr>
+    <th><%= t("thumbnail") %></th>
+    <th><%= t("ext_galleries_title") %></th>
+    <th><%= t("action") %></th>
+  </tr>
+
+  <% @gallery.gallery_items.each do |gallery_item| %>
+    <tr id="<%= dom_id(gallery_item) %>">
+      <td><%= link_to(image_tag(gallery_item.attachment.url(:mini)), gallery_item.attachment.url(:normal)) %></td>
+      <td><%= gallery_item.title %></td>
+      <td class="actions">
+        <%= link_to_with_icon('edit', t("edit"), edit_admin_gallery_gallery_item_url(@gallery, gallery_item)) %>
+        &nbsp;
+        <%= link_to_delete gallery_item, {:url => admin_gallery_gallery_item_url(@gallery, gallery_item) }%>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<div id="gallery_item_form"></div>
+<br/>
+<p>
+    <%= link_to icon('add') + ' ' + t("ext_galleries_new_gallery_item"), new_admin_gallery_gallery_item_url(@gallery), :id => "new_gallery_item_link" %>
+</p>
+
+<% content_for :head do %>
+  <script type="text/javascript">
+    jQuery(document).ready(function(){
+
+      jQuery('#new_gallery_item_link').click(function (event) {
+        event.preventDefault();
+        jQuery(this).hide();
+        jQuery.ajax({type: 'GET', url: this.href, data: ({authenticity_token: AUTH_TOKEN}), success: function(r){ jQuery('#gallery_item_form').html(r);} });
+      });
+
+    });
+  </script>
+<% end %>

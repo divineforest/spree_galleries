@@ -1,0 +1,11 @@
+<% @body_id = 'gallery-item-details' %>
+<% content_for :head do %>
+	<%= stylesheet_link_tag "galleries" %>
+<% end %>
+<h1><%= @gallery_item.title %></h1>
+
+<div class="gallery-item-picture">
+	<%= image_tag(@gallery_item.attachment.url(:large)) %>
+</div>
+
+<%= link_to "#{t(:ext_galleries_back_to)} #{@gallery_item.gallery.title}", [@gallery_item.gallery, :gallery_items] %>
