@@ -8,6 +8,7 @@ Installation
 Add to Gemfile:
     gem 'spree_galleries', :git => 'git://github.com/divineforest/spree_galleries.git'
 and then run
+    bundle install
     rake spree_galleries:install && rake db:migrate
 
 To change default picture sizes create config/initializers/spree_galleries.rb and insert:
