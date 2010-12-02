@@ -12,7 +12,7 @@
 			<div class="gallery">
 				<h2 class="gallery-title"><%= gallery.title %></h2>
 				<div class="gallery-picture">
-					<%= link_to image_tag(gallery.gallery_items.present? && gallery.gallery_items.first.attachment.url(:normal)), [gallery, :gallery_items] %>
+					<%= link_to image_tag(gallery.gallery_items.first.attachment.url(:normal)), [gallery, :gallery_items] if gallery.gallery_items.present? %>
 				</div>
 			</div>
 		<% end %>
